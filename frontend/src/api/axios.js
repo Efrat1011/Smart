@@ -1,10 +1,21 @@
-import axios from 'axios'
+// src/axios.js
+
+import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://localhost:3000/api',
+  baseURL: 'http://localhost:5000/api', // бекенд URL
   headers: {
     'Content-Type': 'application/json',
   },
-})
+});
 
-export default api
+// Егер токен керек болса (мысалы, login арқылы JWT алған соң):
+api.interceptors.request.use((config) => {
+  const token = localStorage.getItem('token');
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});
+
+export default api;

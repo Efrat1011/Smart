@@ -1,7 +1,8 @@
-const express = require('express')
-const router = express.Router()
-const { getWeather } = require('../controllers/weatherController')
+const express = require('express');
+const router = express.Router();
+const { getWeather } = require('../controllers/weatherController');
 
-router.get('/', getWeather)
+// Тек '/' болу керек
+router.get('/', getWeather);
 
-module.exports = router
+module.exports = router;

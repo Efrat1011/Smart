@@ -35,7 +35,7 @@ exports.login = async (req, res) => {
     const isMatch = await bcrypt.compare(password, user.rows[0].password);
     if (!isMatch) return res.status(400).json({ message: "Қате құпиясөз" });
 
-    const token = jwt.sign({ id: user.rows[0].id }, JWT_SECRET, { expiresIn: '1d' });
+    const token = jwt.sign({ id: user.rows[0].id }, JWT_SECRET, { expiresIn: '1h' });
     res.json({ token });
   } catch (err) {
     res.status(500).json({ message: err.message });

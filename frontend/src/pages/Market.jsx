@@ -1,56 +1,53 @@
-import { useEffect, useState } from 'react'
-import axios from 'axios'
+import { useEffect, useState } from "react";
+import axios from "../api/axios";
+import AddProductForm from "../components/AddProductForm";
+import ProductCard from "../components/ProductCard";
 
-function Market() {
-  const [products, setProducts] = useState([])
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState('')
+export default function Market() {
+  const [products, setProducts] = useState([]);
+  const [error, setError] = useState("");
 
-  useEffect(() => {
   const fetchProducts = async () => {
     try {
-      const res = await axios.get('/api/products')
-      console.log('Келген дерек:', res.data)
-      setProducts(res.data.data) // немесе res.data.products — нақты келгенге байланысты
-      setLoading(false)
+      const res = await axios.get("/products");
+      setProducts(res.data);
     } catch (err) {
-      console.error(err)
-      setError('Өнімдерді жүктеу кезінде қате болды')
-      setLoading(false)
+      setError("Өнімдерді жүктеу қатесі");
     }
-  }
+  };
 
-  fetchProducts()
-}, [])
+  const handleProductAdded = (newProduct) => {
+    setProducts([newProduct, ...products]);
+  };
 
+  const handleDelete = (id) => {
+    setProducts(products.filter((p) => p.id !== id));
+  };
 
-  if (loading) return <p className="text-center mt-10">Жүктелуде...</p>
-  if (error) return <p className="text-center mt-10 text-red-500">{error}</p>
+  const handleUpdate = (updatedProduct) => {
+    setProducts(products.map((p) => (p.id === updatedProduct.id ? updatedProduct : p)));
+  };
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
 
   return (
-    <div className="p-4">
-      <h2 className="text-2xl font-bold mb-6 text-center">🛒 Market</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        {products.map((product) => (
-          <div
-            key={product.id}
-            className="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-md"
-          >
-            <img
-              src={product.image_url}
-              alt={product.name}
-              className="w-full h-48 object-cover rounded"
-            />
-            <h3 className="mt-2 text-lg font-bold">{product.name}</h3>
-            <p className="text-sm text-gray-600 dark:text-gray-300">{product.description}</p>
-            <p className="mt-2 font-semibold text-green-600 dark:text-green-400">
-              {product.price} ₸
-            </p>
-          </div>
-        ))}
-      </div>
-    </div>
-  )
-}
+    <div className="p-4 max-w-3xl mx-auto">
+      <h1 className="text-3xl font-bold mb-4 text-gray-900 dark:text-white">🛒 Маркет</h1>
 
-export default Market
+      <AddProductForm onProductAdded={handleProductAdded} />
+
+      {error && <p className="text-red-500">{error}</p>}
+
+      {products.map((product) => (
+        <ProductCard
+          key={product.id}
+          product={product}
+          onDelete={handleDelete}
+          onUpdate={handleUpdate}
+        />
+      ))}
+    </div>
+  );
+}

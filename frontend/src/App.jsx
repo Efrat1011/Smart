@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, BrowserRouter } from 'react-router-dom'
 import Register from './pages/Register'
 import Login from './pages/Login'
 import Market from './pages/Market'
@@ -12,7 +12,7 @@ import AddProduct from './pages/AddProduct'
 
 const App = () => {
   return (
-    <Router>
+    <BrowserRouter>
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -60,7 +60,7 @@ const App = () => {
            />
         </Routes>
       </Layout>
-    </Router>
+    </BrowserRouter>
   )
 }
 

@@ -131,16 +131,6 @@ const Home = () => {
           ></iframe>
         </div>
      </section>
-      {/* Quick links */}
-      <section>
-        <h2 className="text-2xl font-semibold mb-4">🔗 Жылдам сілтемелер</h2>
-        <div className="flex flex-wrap gap-3">
-          <Link to="/weather" className="bg-blue-100 px-4 py-2 rounded hover:bg-blue-200">Ауа райы</Link>
-          <Link to="/market" className="bg-yellow-100 px-4 py-2 rounded hover:bg-yellow-200">Нарық</Link>
-          <Link to="/tips" className="bg-green-100 px-4 py-2 rounded hover:bg-green-200">Кеңестер</Link>
-          <Link to="/profile" className="bg-gray-100 px-4 py-2 rounded hover:bg-gray-200">Профиль</Link>
-        </div>
-      </section>
     </div>
   )
 }
