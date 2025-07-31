@@ -1,17 +1,20 @@
 const express = require('express');
 const router = express.Router();
-const {
-  getAllProducts,
-  getProductById,
-  createProduct,
-  updateProduct,
-  deleteProduct
-} = require('../controllers/productController');
+const productController = require('../controllers/productController');
 
-router.get('/', getAllProducts);
-router.get('/:id', getProductById);
-router.post('/', createProduct);
-router.put('/:id', updateProduct);
-router.delete('/:id', deleteProduct);
+// Барлық өнімдер
+router.get('/', productController.getAllProducts);
+
+// Бір өнім
+router.get('/:id', productController.getProductById);
+
+// Қосу
+router.post('/', productController.createProduct);
+
+// Жаңарту
+router.put('/:id', productController.updateProduct);
+
+// Өшіру
+router.delete('/:id', productController.deleteProduct);
 
 module.exports = router;

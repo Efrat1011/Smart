@@ -33,21 +33,46 @@ export default function Market() {
   }, []);
 
   return (
-    <div className="p-4 max-w-3xl mx-auto">
-      <h1 className="text-3xl font-bold mb-4 text-gray-900 dark:text-white">🛒 Маркет</h1>
+    <div className="p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12 max-w-7xl mx-auto">
+      <div className="text-center mb-10">
+        <h1 className="text-4xl sm:text-5xl font-bold text-green-700 dark:text-green-300">
+          🛒 Фермерлік Маркет
+        </h1>
+        <p className="mt-2 text-gray-600 dark:text-gray-400 text-base sm:text-lg">
+          Мұнда өзіңіздің ауылшаруашылық өнімдеріңізді қосыңыз немесе көріңіз
+        </p>
+      </div>
 
-      <AddProductForm onProductAdded={handleProductAdded} />
+      {/* Жаңа өнім қосу формасы */}
+      <div className="mb-8">
+        <AddProductForm onProductAdded={handleProductAdded} />
+      </div>
 
-      {error && <p className="text-red-500">{error}</p>}
+      {/* Қате хабарламасы */}
+      {error && (
+        <p className="text-red-500 bg-red-100 dark:bg-red-800 p-3 rounded-md text-center my-4">
+          {error}
+        </p>
+      )}
 
-      {products.map((product) => (
-        <ProductCard
-          key={product.id}
-          product={product}
-          onDelete={handleDelete}
-          onUpdate={handleUpdate}
-        />
-      ))}
+      {/* Өнімдер тізімі */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
+        {products.map((product) => (
+          <ProductCard
+            key={product.id}
+            product={product}
+            onDelete={handleDelete}
+            onUpdate={handleUpdate}
+          />
+        ))}
+      </div>
+
+      {/* Егер ешқандай өнім болмаса */}
+      {products.length === 0 && (
+        <p className="text-center text-gray-600 dark:text-gray-400 mt-10 text-lg">
+          Қазіргі уақытта өнімдер жоқ.
+        </p>
+      )}
     </div>
   );
 }

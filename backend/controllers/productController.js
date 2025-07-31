@@ -1,5 +1,6 @@
 const pool = require('../config/db');
 
+// Барлық өнімдерді алу
 exports.getAllProducts = async (req, res) => {
   try {
     const result = await pool.query('SELECT * FROM products ORDER BY id DESC');
@@ -9,6 +10,7 @@ exports.getAllProducts = async (req, res) => {
   }
 };
 
+// Бір өнімді алу
 exports.getProductById = async (req, res) => {
   const { id } = req.params;
   try {
@@ -21,6 +23,7 @@ exports.getProductById = async (req, res) => {
   }
 };
 
+// Жаңа өнім қосу
 exports.createProduct = async (req, res) => {
   const { name, price, description } = req.body;
   if (!name || !price) {
@@ -37,6 +40,7 @@ exports.createProduct = async (req, res) => {
   }
 };
 
+// Өнімді жаңарту
 exports.updateProduct = async (req, res) => {
   const { id } = req.params;
   const { name, price, description } = req.body;
@@ -53,6 +57,7 @@ exports.updateProduct = async (req, res) => {
   }
 };
 
+// Өнімді өшіру
 exports.deleteProduct = async (req, res) => {
   const { id } = req.params;
   try {

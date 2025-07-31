@@ -8,8 +8,10 @@ const productRoutes = require('./routes/productRoutes')
 const tipsRoutes = require('./routes/tipsRoutes')
 const weatherRoutes = require('./routes/weatherRoutes')
 const profileRoutes = require('./routes/profileRoutes')
+const geminiRoutes = require('./routes/geminiRoutes');
 
-dotenv.config()
+require('dotenv').config();
+
 
 const app = express()
 
@@ -37,11 +39,13 @@ app.use('/api/products', productRoutes)
 app.use('/api/tips', tipsRoutes)
 app.use('/api/weather', weatherRoutes)
 app.use('/api/profile', profileRoutes)
+app.use('/api/gemini', geminiRoutes);
 
 // Тексеру үшін
 app.get('/', (req, res) => {
   res.send('🚀 SmartFermer сервері жұмыс істеп тұр!')
 })
+
 
 // Серверді іске қосу
 const PORT = process.env.PORT || 5000
