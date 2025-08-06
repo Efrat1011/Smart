@@ -41,7 +41,7 @@ const Login = () => {
             <FiLogIn className="text-white" />
             Жүйеге кіру
           </h2>
-          <p className="text-blue-100 mt-1">SmartFermer платформасына қош келдіңіз</p>
+          <p className="text-blue-100 mt-1">SmartFarmer платформасына қош келдіңіз</p>
         </div>
 
         <div className="p-6">

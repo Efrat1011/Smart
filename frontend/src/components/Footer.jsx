@@ -9,7 +9,7 @@ export default function Footer() {
           <h2 className="text-3xl font-bold flex items-center justify-center md:justify-start gap-2">
             <span className="text-green-300">🌿</span>
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-green-300 to-white">
-              SmartFermer
+              SmartFarmer
             </span>
           </h2>
           <p className="text-green-200 text-sm mt-1">
@@ -79,7 +79,7 @@ export default function Footer() {
                 d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" 
               />
             </svg>
-            support@smartfermer.kz
+            support@smartfarmer.kz
           </p>
         </div>
       </div>

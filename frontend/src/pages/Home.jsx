@@ -17,7 +17,7 @@ const Home = () => {
       borderColor: "border-blue-100"
     },
     { 
-      title: "Нарық бағамы", 
+      title: "Нарық бағасы", 
       desc: "Ауыл шаруашылық өнімдерінің бағалары", 
       link: "/market",
       icon: (
@@ -61,14 +61,14 @@ const Home = () => {
     {
       name: "Эфрат Насыров",
       role: "Байсеит, бидай өсіруші",
-      comment: "SmartFermer арқылы өнімділігімді 30%-ға арттырдым. Баға, кеңес - бәрі бір жерде.",
-      avatar: "EB"
+      comment: "SmartFarmer арқылы өнімділігімді 30%-ға арттырдым. Баға, кеңес - бәрі бір жерде.",
+      avatar: "EN"
     },
     {
       name: "Анара Аутова",
       role: "Байсеит, жеміс өсіруші",
       comment: "Бұл жүйе шынымен көмектесті. Субсидия алуға қажетті ақпарат дәл уақытында келді!",
-      avatar: "АС"
+      avatar: "АA"
     }
   ];
 
@@ -87,16 +87,12 @@ const Home = () => {
         <div className="relative max-w-7xl mx-auto px-4 py-24 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
-              SmartFermer - Ауыл шаруашылығының цифрлық шешімі
+              SmartFarmer - Ауыл шаруашылығының цифрлық шешімі
             </h1>
             <p className="mt-6 text-xl text-green-100 max-w-3xl mx-auto">
-              Фермерлер үшін барлық қажетті құралдар бір платформада: ауа райы, нарық бағамы, кеңестер және бақылау
+              Фермерлер үшін барлық қажетті құралдар бір платформада: ауа райы, нарық бағасы, кеңестер және бақылау
             </p>
-            <div className="mt-10">
-              <Link to="/register" className="inline-block bg-white py-3 px-8 border border-transparent rounded-md text-base font-medium text-green-700 hover:bg-green-50 transition duration-150">
-                Тіркелу
-              </Link>
-            </div>
+            
           </div>
         </div>
       </div>
@@ -203,7 +199,7 @@ const Home = () => {
         <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
           <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
             <span className="block">Дамуға дайынсыз ба?</span>
-            <span className="block text-green-200">SmartFermer-ді бүгін қолданып көріңіз</span>
+            <span className="block text-green-200">SmartFarmer-ді бүгін қолданып көріңіз</span>
           </h2>
           <div className="mt-8 flex lg:mt-0 lg:flex-shrink-0">
             <div className="inline-flex rounded-md shadow">
