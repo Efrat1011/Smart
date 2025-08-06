@@ -16,7 +16,7 @@ const Profile = () => {
         return;
       }
 
-      const response = await axios.get('http://localhost:5000/api/auth/profile', {
+      const response = await axios.get('https://smart-lk9j.onrender.com/api/auth/profile', {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -45,29 +45,61 @@ const Profile = () => {
   }, []);
 
   if (error) {
-    return <div className="text-red-600 text-center mt-6 font-semibold">{error}</div>;
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-red-50 to-white">
+        <div className="bg-white p-6 rounded-xl shadow-lg border border-red-200 max-w-md w-full mx-4">
+          <div className="text-red-600 text-center font-semibold text-lg">
+            {error}
+          </div>
+        </div>
+      </div>
+    );
   }
 
   if (!user) {
-    return <div className="text-center text-green-700 mt-6 font-medium">Жүктелуде...</div>;
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-50 to-white">
+        <div className="text-center">
+          <div className="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-green-600 mb-4"></div>
+          <p className="text-green-700 font-medium text-lg">Жүктелуде...</p>
+        </div>
+      </div>
+    );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-100 to-lime-200 flex items-center justify-center px-4">
-      <div className="w-full max-w-md bg-white shadow-xl rounded-2xl p-6 border border-green-300">
-        <h2 className="text-2xl font-bold text-green-800 mb-4 text-center">👩‍🌾 Профиль</h2>
-        
-        <div className="space-y-3 text-green-900">
-          <p><span className="font-semibold">Атыңыз:</span> {user.name}</p>
-          <p><span className="font-semibold">Логин:</span> {user.login}</p>
+    <div className="min-h-screen bg-gradient-to-br from-green-50 to-white flex items-center justify-center px-4 py-8">
+      <div className="w-full max-w-md bg-white shadow-lg rounded-xl overflow-hidden border border-gray-100">
+        {/* Profile Header */}
+        <div className="bg-gradient-to-r from-green-600 to-green-500 p-6 text-center">
+          <div className="mx-auto w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-md mb-4">
+            <span className="text-3xl">👩‍🌾</span>
+          </div>
+          <h2 className="text-2xl font-bold text-white">Профиль</h2>
         </div>
 
-        <button
-          onClick={handleLogout}
-          className="mt-6 w-full bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded-md shadow transition duration-200"
-        >
-          🔓 Шығу
-        </button>
+        {/* Profile Content */}
+        <div className="p-6 space-y-4">
+          <div className="bg-gray-50 p-4 rounded-lg">
+            <p className="text-gray-700 font-medium">Атыңыз:</p>
+            <p className="text-gray-900 text-lg font-semibold">{user.name}</p>
+          </div>
+
+          <div className="bg-gray-50 p-4 rounded-lg">
+            <p className="text-gray-700 font-medium">Логин:</p>
+            <p className="text-gray-900 text-lg font-semibold">{user.login}</p>
+          </div>
+
+          <button
+            onClick={handleLogout}
+            className="mt-6 w-full bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-medium py-3 px-4 rounded-lg shadow-md transition-all duration-300 flex items-center justify-center gap-2"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path fillRule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clipRule="evenodd" />
+            </svg>
+            Шығу
+          </button>
+        </div>
       </div>
     </div>
   );

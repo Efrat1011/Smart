@@ -33,26 +33,29 @@ export default function Market() {
   }, []);
 
   return (
-    <div className="p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12 max-w-7xl mx-auto">
+    <div className="min-h-screen bg-gradient-to-b from-green-50 to-white dark:from-gray-900 dark:to-gray-800 p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12 max-w-7xl mx-auto">
       <div className="text-center mb-10">
-        <h1 className="text-4xl sm:text-5xl font-bold text-green-700 dark:text-green-300">
-          🛒 Фермерлік Маркет
+        <div className="inline-flex items-center justify-center bg-white dark:bg-gray-800 p-4 rounded-full shadow-lg mb-4">
+          <span className="text-4xl">🛒</span>
+        </div>
+        <h1 className="text-4xl sm:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-green-800 dark:from-green-300 dark:to-green-500">
+          Фермерлік Маркет
         </h1>
-        <p className="mt-2 text-gray-600 dark:text-gray-400 text-base sm:text-lg">
+        <p className="mt-4 text-gray-600 dark:text-gray-300 text-base sm:text-lg max-w-2xl mx-auto">
           Мұнда өзіңіздің ауылшаруашылық өнімдеріңізді қосыңыз немесе көріңіз
         </p>
       </div>
 
       {/* Жаңа өнім қосу формасы */}
-      <div className="mb-8">
+      <div className="mb-10 bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 border border-gray-100 dark:border-gray-700">
         <AddProductForm onProductAdded={handleProductAdded} />
       </div>
 
       {/* Қате хабарламасы */}
       {error && (
-        <p className="text-red-500 bg-red-100 dark:bg-red-800 p-3 rounded-md text-center my-4">
+        <div className="mb-6 p-4 bg-red-100 dark:bg-red-900/20 text-red-700 dark:text-red-300 rounded-lg border border-red-200 dark:border-red-800 text-center">
           {error}
-        </p>
+        </div>
       )}
 
       {/* Өнімдер тізімі */}
@@ -69,9 +72,17 @@ export default function Market() {
 
       {/* Егер ешқандай өнім болмаса */}
       {products.length === 0 && (
-        <p className="text-center text-gray-600 dark:text-gray-400 mt-10 text-lg">
-          Қазіргі уақытта өнімдер жоқ.
-        </p>
+        <div className="text-center py-12">
+          <div className="inline-block bg-gray-100 dark:bg-gray-700 p-4 rounded-full mb-4">
+            <span className="text-3xl text-gray-400 dark:text-gray-500">😕</span>
+          </div>
+          <p className="text-gray-600 dark:text-gray-300 text-lg font-medium">
+            Қазіргі уақытта өнімдер жоқ
+          </p>
+          <p className="text-gray-500 dark:text-gray-400 mt-1">
+            Жаңа өнім қосу үшін жоғарыдағы форманы толтырыңыз
+          </p>
+        </div>
       )}
     </div>
   );
